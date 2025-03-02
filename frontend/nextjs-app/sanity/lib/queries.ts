@@ -101,5 +101,7 @@ export const getHomePageQuery = defineQuery(`
     _id,
     _type,
     title,
+    description,
+    subtitle
   }
 `);

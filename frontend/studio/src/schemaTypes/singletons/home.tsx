@@ -21,5 +21,11 @@ export const home = defineType({
       title: 'Description',
       type: 'string',
     }),
+    defineField({
+      name: 'subtitle',
+      description: 'Used for the home page subtitle.',
+      title: 'Subtitle',
+      type: 'string',
+    }),
   ],
 })
