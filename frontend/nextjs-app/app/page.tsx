@@ -17,21 +17,21 @@ export default async function Page() {
           <div className="mx-auto max-w-2xl py-20 lg:max-w-4xl lg:px-12 text-center">
             <div className="flex flex-col gap-4 items-center">
               <div className=" text-md leading-6 prose uppercase">
-                {page.subtitle}
+                {page?.subtitle}
               </div>
               <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-black">
               
                 <span className="text-red-500 ">
-                  {page.title?.split(" ")[0]}
+                  {page?.title?.split(" ")[0]}
                 </span>{" "}
                 <span className="text-[#000] ">
-                  {page.title?.split(" ").slice(1).join(" ")}
+                  {page?.title?.split(" ").slice(1).join(" ")}
                 </span>
               </h1>
             </div>
             <div className="mt-6 space-y-6 prose sm:prose-lg md:prose-xl lg:prose-2xl text-gray-700">
               <p>
-                {page.description}
+                {page?.description}
               </p>
             </div>
           </div>
