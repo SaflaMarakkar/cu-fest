@@ -95,3 +95,11 @@ export const pagesSlugs = defineQuery(`
   *[_type == "page" && defined(slug.current)]
   {"slug": slug.current}
 `);
+
+export const getHomePageQuery = defineQuery(`
+  *[_type == "home"][0]{
+    _id,
+    _type,
+    title,
+  }
+`);

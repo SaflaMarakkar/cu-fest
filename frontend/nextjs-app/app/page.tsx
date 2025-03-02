@@ -1,10 +1,13 @@
 import { Suspense } from "react";
-import Link from "next/link";
 
 import { AllPosts } from "@/app/components/Posts";
-import GetStartedCode from "@/app/components/GetStartedCode";
+import { sanityFetch } from "@/sanity/lib/live";
+import { getHomePageQuery } from "@/sanity/lib/queries";
 
 export default async function Page() {
+  const [{ data: page }] = await Promise.all([
+      sanityFetch({ query: getHomePageQuery }),
+    ]);
   return (
     <>
       <div className="bg-gradient-to-r from-red-200 from-0% via-white via-40%  relative">
@@ -17,11 +20,12 @@ export default async function Page() {
                 subheading
               </div>
               <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-black">
+              
                 <span className="text-red-500 ">
-                  CU
+                  {page.title?.split(" ")[0]}
                 </span>{" "}
                 <span className="text-[#000] ">
-                  Fest
+                  {page.title?.split(" ").slice(1).join(" ")}
                 </span>
               </h1>
             </div>
