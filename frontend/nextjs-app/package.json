@@ -25,6 +25,7 @@
     "meshline": "^3.3.1",
     "next": "^15.1.6",
     "next-sanity": "^9.8.42",
+    "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sanity": "^3.74.0",

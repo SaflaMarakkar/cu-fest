@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
-import { useFrame, ReactThreeFiber, extend } from "@react-three/fiber";
+import { useFrame, extend } from "@react-three/fiber";
 import { useGLTF, useTexture } from "@react-three/drei";
 import {
   BallCollider,
@@ -22,6 +22,13 @@ declare global {
     }
   }
 }
+
+useGLTF.preload(
+  "/assets/card.glb"
+);
+useTexture.preload(
+  "/assets/band.png"
+);
 
 const segmentProps = {
   type: "dynamic",
