@@ -15,7 +15,8 @@ import ProfileCard from "../components/ProfileCard";
 export default function App() {
   return (
     <div className="relative h-screen w-full">
-      <div className="flex h-screen w-full">
+      <div className="flex flex-row h-screen w-full">
+        <div className="w-3/4 bg-black">
         <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
           <ambientLight intensity={Math.PI} />
           <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
@@ -53,7 +54,8 @@ export default function App() {
             />
           </Environment>
         </Canvas>
-        <div className="m-auto w-1/2">
+        </div>
+        <div className="m-auto w-full lg:w-1/2">
           <ProfileCard />
         </div>
       </div>
