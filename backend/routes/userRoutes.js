@@ -1,0 +1,14 @@
+const express = require("express");
+const router = express.Router();
+
+router.get("/:id", async (req, res) => {
+  try {
+      console.log(req.params.id);
+
+      res.json({ user: req.params.id });
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
+
+module.exports = router;
