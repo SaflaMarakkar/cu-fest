@@ -1,8 +1,6 @@
 "use client";
-import { Canvas, extend } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import {
-  useGLTF,
-  useTexture,
   Environment,
   Lightformer,
 } from "@react-three/drei";
@@ -11,8 +9,12 @@ import {
 } from "@react-three/rapier";
 import Band from "../components/Band";
 import ProfileCard from "../components/ProfileCard";
+// import RegistrationForm from "../components/RegistrationForm";
+import { useState } from "react";
 
 export default function App() {
+  const [name, setName] = useState("");
+  const [role, setRole] = useState("Guest");
   return (
     <div className="relative h-screen w-full">
       <div className="flex flex-row h-screen w-full">
@@ -20,7 +22,7 @@ export default function App() {
         <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
           <ambientLight intensity={Math.PI} />
           <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-            <Band />
+            <Band name={name} role={role}/>
           </Physics>
           <Environment background blur={0.75}>
             <color attach="background" args={["grey"]} />
@@ -57,6 +59,7 @@ export default function App() {
         </div>
         <div className="m-auto w-full lg:w-1/2">
           <ProfileCard />
+          {/* <RegistrationForm name={name} setName={setName} role={role} setRole={setRole}/> */}
         </div>
       </div>
     </div>

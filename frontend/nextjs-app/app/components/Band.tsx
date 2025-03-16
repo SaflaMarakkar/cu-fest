@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
 import { useFrame, extend } from "@react-three/fiber";
-import { useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF, useTexture, Text } from "@react-three/drei";
 import {
   BallCollider,
   CuboidCollider,
@@ -24,10 +24,10 @@ declare global {
 }
 
 useGLTF.preload(
-  "/assets/card.glb"
+  "/assets/dev-card.glb"
 );
 useTexture.preload(
-  "/assets/band.png"
+  "/assets/dev-band.png"
 );
 
 const segmentProps = {
@@ -38,7 +38,7 @@ const segmentProps = {
   linearDamping: 2,
 } as const;
 
-export default function Band({ maxSpeed = 50, minSpeed = 10 }) {
+export default function Band({ maxSpeed = 50, minSpeed = 10, name, role }: { maxSpeed?: number, minSpeed?: number, name: string, role: string }) {
   const band = useRef<THREE.Mesh<MeshLineGeometry, MeshLineMaterial>>(null);
   const fixed = useRef<RapierRigidBody>(null);
   const j1 = useRef<RapierRigidBody>(null);
@@ -53,8 +53,8 @@ export default function Band({ maxSpeed = 50, minSpeed = 10 }) {
   const [dragged, drag] = useState<THREE.Vector3 | false>(false);
   const [hovered, hover] = useState(false);
 
-  const { nodes, materials } = useGLTF("/assets/card.glb");
-  const texture = useTexture("/assets/band.png");
+  const { nodes, materials } = useGLTF("/assets/dev-card.glb");
+  const texture = useTexture("/assets/dev-band.png");
 
   const [curve] = useState(
     () =>
@@ -200,7 +200,31 @@ export default function Band({ maxSpeed = 50, minSpeed = 10 }) {
               material-roughness={0.3}
             />
             {/* @ts-expect-error geometry/map are not declared? */}
-            <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
+            <mesh geometry={nodes.clamp.geometry} material={materials.metal} >
+            <Text
+              position={[-0.3, 0.25, 0.01]}
+              fontSize={0.08}
+              color="#ffffff"
+              anchorX="left"
+              anchorY="top"
+              maxWidth={3}
+              textAlign="left"
+              fontWeight={600}
+            >
+              {role.toUpperCase()}
+            </Text>
+            <Text
+              position={[0, 0.1, 0.01]}
+              fontSize={0.08}
+              color="#000000"
+              anchorX="center"
+              anchorY="middle"
+              maxWidth={3}
+              fontWeight={600}
+            >
+              {name.toUpperCase()}
+            </Text>
+            </mesh>
           </group>
         </RigidBody>
       </group>
