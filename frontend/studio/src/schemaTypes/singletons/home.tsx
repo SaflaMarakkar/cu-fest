@@ -27,5 +27,24 @@ export const home = defineType({
       title: 'Subtitle',
       type: 'string',
     }),
+    defineField({
+      name: "heroBanner",
+      title: "Hero Banner",
+      type: "image",
+      options: {
+        hotspot: true,
+        aiAssist: {
+          imageDescriptionField: "alt",
+        },
+      },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+          description: "Important for SEO and accessibility.",
+        },
+      ],
+    }),
   ],
 })

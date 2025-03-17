@@ -102,6 +102,7 @@ export const getHomePageQuery = defineQuery(`
     _type,
     title,
     description,
-    subtitle
+    subtitle,
+    "heroBanner": heroBanner.asset->url
   }
 `);
