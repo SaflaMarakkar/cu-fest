@@ -11,7 +11,7 @@ import Band from "../../components/Band";
 import ProfileCard from "../../components/ProfileCard";
 import { useCallback, useEffect } from "react";
 
-export default function App({ params }: { params: { id: string } }) {
+export default function App({ params }: { params: Promise<{ id: string }> }) {
   
   
   const handleData = useCallback(async () => {
