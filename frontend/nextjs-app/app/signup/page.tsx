@@ -1,0 +1,50 @@
+"use client";
+import { useState } from "react";
+
+export default function Signup() {
+  const [state, setState] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    githubAccount: "",
+    phoneNumber: "",
+    password: ""
+  });
+  const handleSignup = async () => {
+    if (!state.firstName || !state.lastName || !state.email) {
+      alert("First Name, Last Name, and Email are required");
+      return;
+    }
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body:  JSON.stringify(state),
+    }).catch((error) => {
+      console.log(error);
+    });
+    console.log(response);
+    if (response) {
+      window.location.href = "/login";
+    }
+  }
+  return <div className="mt-6 rounded-2xl max-w-3xl min-h-[50vh] flex flex-col justify-center backdrop-blur-lg border bg-transparent-50">
+    <div className="px-12 py-12 flex flex-col gap-3 h-full">
+      <h3 className="text-2xl font-semibold">Signup</h3>
+      <span className="font-thin"> Fist Name </span>
+      <input type="text" placeholder="First Name" className='border border-gray-100 rounded-lg text-black p-2' name="firstName" onChange={(e) => setState({ ...state, firstName: e.target.value })} required/>
+      <span className="font-thin"> Last Name </span>
+      <input type="text" placeholder="Last Name" className='border border-gray-100 rounded-lg text-black p-2' name="lastName" onChange={(e) => setState({ ...state, lastName: e.target.value })} required />
+      <span className="font-thin"> Email </span>
+      <input type="text" placeholder="Email" className='border border-gray-100 rounded-lg text-black p-2' name="email" onChange={(e) => setState({ ...state, email: e.target.value })} required />
+      <span className="font-thin"> Github </span>
+      <input type="text" placeholder="Github" className='border border-gray-100 rounded-lg text-black p-2' name="githubAccount" onChange={(e) => setState({ ...state, githubAccount: e.target.value })} />
+      <span className="font-thin"> Phone Number </span>
+      <input type="text" placeholder="Phone Number" className='border border-gray-100 rounded-lg text-black p-2' name="phoneNumber" onChange={(e) => setState({ ...state, phoneNumber: e.target.value })} />
+      <span className="font-thin"> Password </span>
+      <input type="password" placeholder="Password" className='border border-gray-100 rounded-lg text-black p-2' name="password" onChange={(e) => setState({ ...state, password: e.target.value })} />
+      <button type="submit" className="mt-4 bg-black hover:bg-red-500 focus:bg-cyan-500 py-3 px-6 text-white transition-colors duration-200 outline rounded" onClick={handleSignup}>Signup</button>
+    </div>
+  </div>;
+}

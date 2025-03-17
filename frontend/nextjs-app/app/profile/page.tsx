@@ -58,7 +58,7 @@ export default function App() {
         </Canvas>
         </div>
         <div className="m-auto w-full lg:w-1/2">
-          <ProfileCard />
+          {/* <ProfileCard /> */}
           {/* <RegistrationForm name={name} setName={setName} role={role} setRole={setRole}/> */}
         </div>
       </div>

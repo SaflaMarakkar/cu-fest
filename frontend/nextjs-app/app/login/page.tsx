@@ -1,0 +1,31 @@
+"use client";
+import { useState } from "react";
+
+export default function Login() {
+  const [state, setState] = useState({
+    email: "",
+    password: ""
+  })
+  const handleLogin = async () => {
+    if(!state.email || !state.password) {
+      alert("Email and Password are required");
+      return;
+    }
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/users/" + state.email + "/" + state.password).then(res => res.json()).catch((error) => {
+      console.log(error);
+    });
+    if (response) {
+      window.location.href = `/profile/${response._id}`;
+    }
+  }
+  return <div className="mt-6 rounded-2xl max-w-3xl min-h-[50vh] flex flex-col justify-center backdrop-blur-lg border bg-transparent-50">
+    <div className="px-12 py-12 flex flex-col gap-3 h-full">
+      <h3 className="text-2xl font-semibold">Login</h3>
+      <span className="font-thin"> Email </span>
+      <input type="text" placeholder="Email" className='border border-gray-100 rounded-lg text-black p-2' name="email" onChange={(e) => setState({ ...state, email: e.target.value })} />
+      <span className="font-thin"> Password </span>
+      <input type="password" placeholder="Password" className='border border-gray-100 rounded-lg text-black p-2' name="password" onChange={(e) => setState({ ...state, password: e.target.value })} />
+      <button className="mt-4 bg-black hover:bg-red-500 focus:bg-cyan-500 py-3 px-6 text-white transition-colors duration-200 outline rounded" onClick={handleLogin}>Login</button>
+    </div>
+  </div>;
+}

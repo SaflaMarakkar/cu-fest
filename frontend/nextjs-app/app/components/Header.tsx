@@ -22,8 +22,13 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/profile" className="">
+                <Link href="/login" className="">
                   Login
+                </Link>
+              </li>
+              <li>
+                <Link href="/signup" className="">
+                  Sign Up
                 </Link>
               </li>
 
