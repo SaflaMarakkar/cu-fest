@@ -27,7 +27,7 @@ export default function CustomPortableText({
     block: {
       h1: ({ children, value }) => (
         // Add an anchor to the h1
-        <h1 className="group relative">
+        <h1 className="group relative text-white">
           {children}
           <a
             href={`#${value?._key}`}

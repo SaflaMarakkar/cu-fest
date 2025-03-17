@@ -44,7 +44,7 @@ const Posts = ({
 }) => (
   <div>
     {heading && (
-      <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+      <h2 className="text-3xl font-bold tracking-tight text-white-900 sm:text-4xl lg:text-5xl">
         {heading}
       </h2>
     )}
@@ -90,7 +90,7 @@ export const AllPosts = async () => {
   return (
     <Posts
       heading="Recent Posts"
-      subHeading={`${data.length === 1 ? "This blog post is" : `These ${data.length} blog posts are`} populated from your Sanity Studio.`}
+      subHeading={`${data.length === 1 ? "This blog post is" : `These ${data.length} blog posts are`} populated from your CMS.`}
     >
       {data.map((post: any) => (
         <Post key={post._id} post={post} />

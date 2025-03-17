@@ -7,8 +7,10 @@ router.get("/:id", async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) return res.status(404).json({ message: "User not found" });
-
-    res.json(user);
+    // remove password from response
+    const filteredData = { ...user._doc };
+    delete filteredData.password;
+    res.json(filteredData);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -18,7 +20,8 @@ router.get("/:email/:password", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.params.email });
     if (!user) return res.status(404).json({ message: "User not found" });
-
+    // remove password from response
+    delete user.password;
     res.json(user);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -60,7 +63,12 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const users = await User.find();
-    res.json(users);
+    // remove password from response on delete
+    const filteredUsers = await users.map((user) => {
+      delete user.password;
+      return user;
+    })
+    res.json(filteredUsers);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
