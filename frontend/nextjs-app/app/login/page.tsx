@@ -15,7 +15,8 @@ export default function Login() {
       console.log(error);
     });
     if (response) {
-      window.location.href = `/profile/${response._id}`;
+      localStorage.setItem("user-id", response?._id);
+      window.location.href = `/profile`;
     }
   }
   return <div className="mt-6  min-h-[50vh] flex flex-col justify-center items-center"><div className="mt-6 rounded-2xl min-w-[100vh] min-h-[50vh] flex flex-col justify-center backdrop-blur-lg border bg-transparent-50">
