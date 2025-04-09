@@ -725,13 +725,14 @@ export type PagesSlugsResult = Array<{
   slug: string;
 }>;
 // Variable: getHomePageQuery
-// Query: *[_type == "home"][0]{    _id,    _type,    title,    description,    subtitle  }
+// Query: *[_type == "home"][0]{    _id,    _type,    title,    description,    subtitle,    "heroBanner": heroBanner.asset->url  }
 export type GetHomePageQueryResult = {
   _id: string;
   _type: "home";
   title: string | null;
   description: string | null;
   subtitle: string | null;
+  heroBanner: null;
 } | null;
 
 // Query TypeMap
@@ -746,6 +747,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"post\" && slug.current == $slug] [0] {\n    content[]{\n    ...,\n    markDefs[]{\n      ...,\n      \n  _type == \"link\" => {\n    \"page\": page->slug.current,\n    \"post\": post->slug.current\n  }\n\n    }\n  },\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{firstName, lastName, picture},\n\n  }\n": PostQueryResult;
     "\n  *[_type == \"post\" && defined(slug.current)]\n  {\"slug\": slug.current}\n": PostPagesSlugsResult;
     "\n  *[_type == \"page\" && defined(slug.current)]\n  {\"slug\": slug.current}\n": PagesSlugsResult;
-    "\n  *[_type == \"home\"][0]{\n    _id,\n    _type,\n    title,\n    description,\n    subtitle\n  }\n": GetHomePageQueryResult;
+    "\n  *[_type == \"home\"][0]{\n    _id,\n    _type,\n    title,\n    description,\n    subtitle,\n    \"heroBanner\": heroBanner.asset->url\n  }\n": GetHomePageQueryResult;
   }
 }
