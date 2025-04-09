@@ -1,13 +1,20 @@
+import { sanityFetch } from "@/sanity/lib/live";
+import { settingsQuery } from "@/sanity/lib/queries";
 import Link from "next/link";
 
-export default function Header() {
+export default async function Header() {
+  const { data: settings } = await sanityFetch({
+      query: settingsQuery,
+      // Metadata should never contain stega
+      stega: false,
+    });
   return (
     <header className="fixed z-50 h-24 inset-0 bg-transparent flex items-center backdrop-blur-lg">
       <div className="container py-6 sm:px-6">
         <div className="flex items-center justify-between gap-5">
           <Link className="flex items-center gap-2" href="/">
-            <span className="hidden lg:block text-lg pl-2 font-semibold">
-              CU Fest
+            <span className="lg:block text-lg pl-2 font-semibold">
+              {settings?.title || "Tech Fest"}
             </span>
           </Link>
 
