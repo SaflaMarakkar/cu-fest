@@ -25,3 +25,33 @@ body {
   pointer-events: none;
 }
 
+#locationSelector {
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  margin: 12px auto;
+  display: block;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23333' stroke-width='2' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 10px 6px;
+  width: 500px;
+}
+
+#locationSelector:hover {
+  border-color: #999;
+}
+
+#locationSelector:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}

@@ -12,7 +12,11 @@
     <script type="module" src="./index.ts"></script>
   </head>
   <body>
-    <div id="map" class="map"></div>
+    <div style="position: absolute; top: 10px; left: 10px; z-index: 1;">
+      <select id="locationSelector">
+      </select>
+    </div>
+    <div id="map" class="map" style="width: 100vw; height: 100vh;"></div>
 
     <!-- 
       The `defer` attribute causes the script to execute after the full HTML
