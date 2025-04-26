@@ -20,13 +20,15 @@ export default function Signup() {
       headers: {
         "Content-Type": "application/json",
       },
-      body:  JSON.stringify(state),
-    }).catch((error) => {
+      body: JSON.stringify(state),
+    }).then(res => res.json()).catch((error) => {
       console.log(error);
     });
     console.log(response);
     if (response) {
-      window.location.href = "/login";
+      localStorage.setItem("user-id", response?.data?._id);
+      localStorage.setItem("roles", response?.data?.roles)
+      window.location.href = "/profile";
     }
   }
   return <div className="mt-6  min-h-[50vh] flex flex-col justify-center items-center"><div className="mt-6 rounded-2xl min-w-[100vh] min-h-[50vh] flex flex-col justify-center backdrop-blur-lg border bg-transparent-50">

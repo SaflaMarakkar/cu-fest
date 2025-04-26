@@ -15,6 +15,7 @@ export default function Login() {
       console.log(error);
     });
     if (response) {
+      localStorage.setItem("roles", response?.roles);
       localStorage.setItem("user-id", response?._id);
       window.location.href = `/profile`;
     }

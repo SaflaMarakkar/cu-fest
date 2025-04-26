@@ -6,7 +6,7 @@ export default function Footer() {
           <h3 className="mb-10 text-center text-4xl font-bold leading-tight tracking-tighter lg:mb-0 lg:w-1/2 lg:pr-4 lg:text-left lg:text-5xl">
             Festival of Code 2025
           </h3>
-          <div className="flex flex-col gap-3 items-center justify-center lg:w-1/2 lg:flex-row lg:pl-4">
+          {/* <div className="flex flex-col gap-3 items-center justify-center lg:w-1/2 lg:flex-row lg:pl-4">
             <a
               href="https://github.com/SaflaMarakkar/cu-fest"
               className="rounded-full flex gap-2 items-center bg-black hover:bg-red-500 focus:bg-cyan-500 py-3 px-6 text-white transition-colors duration-200"
@@ -15,7 +15,7 @@ export default function Footer() {
             >
               View on GitHub
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

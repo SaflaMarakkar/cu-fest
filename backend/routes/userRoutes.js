@@ -49,11 +49,12 @@ router.post("/", async (req, res) => {
       phoneNumber,
       password,
     });
-    await newUser.save();
+    
+    const data = await newUser.save();
 
     res
       .status(201)
-      .json({ statusCode: 200, message: "User created successfully" });
+      .json({ statusCode: 200, message: "User created successfully", data });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
