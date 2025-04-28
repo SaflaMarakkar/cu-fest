@@ -48,6 +48,7 @@ router.post("/", async (req, res) => {
       githubAccount,
       phoneNumber,
       password,
+      roles: ["User"]
     });
     
     const data = await newUser.save();

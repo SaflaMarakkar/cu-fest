@@ -1,0 +1,62 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+export default function ProgramList() {
+  const [programs, setPrograms] = useState([]);
+
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      try {
+        const res = await fetch("http://localhost:3001/api/programs", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch programs");
+        }
+
+        const data = await res.json();
+        setPrograms(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchPrograms();
+  }, []);
+
+  return (
+    <div style={{ padding: "2rem" }}>
+      <h1>Program List</h1>
+
+      <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "1rem" }}>
+        <thead>
+          <tr>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Name</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Description</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Start Date</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {programs.map((program) => (
+            <tr key={program._id}>
+              <td style={{ border: "1px solid #ddd", padding: "8px" }}>{program.name}</td>
+              <td style={{ border: "1px solid #ddd", padding: "8px" }}>{program.description}</td>
+              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                {new Date(program.startDate).toLocaleDateString()}
+              </td>
+              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                {new Date(program.endDate).toLocaleDateString()}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}

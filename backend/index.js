@@ -20,6 +20,9 @@ mongoose.connect(MONGO_URI)
 const userRoutes = require("./routes/userRoutes");
 app.use("/api/users", userRoutes);
 
+const programRoutes = require("./routes/programRoutes");
+app.use("/api/programs", programRoutes);
+
 app.listen(3001, () => console.log("Server ready on port 3001."));
 
 module.exports = app;
