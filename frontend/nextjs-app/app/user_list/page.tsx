@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<any[]>([]);
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -38,7 +38,7 @@ export default function Home() {
 
     fetchUsers();
 }
-  }, [loading]);
+  }, [router]);
 
   const handleRoleChange = async (userId: string, newRole: string) => {
     console.log(userId, newRole);
