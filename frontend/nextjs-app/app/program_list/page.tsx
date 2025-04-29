@@ -8,7 +8,7 @@ export default function ProgramList() {
   useEffect(() => {
     const fetchPrograms = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/programs", {
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/programs", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
