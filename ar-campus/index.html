@@ -29,24 +29,8 @@
       renderer="antialias: true; alpha: true"
     >
       <a-camera gps-new-camera="gpsMinDistance: 1"></a-camera>
-      <a-entity gps-new-entity-place="latitude: 8.5272683; longitude: 76.8896448">
-        <!-- Red Box -->
-        <a-box material="color: red" scale="10 10 10"></a-box>
-      
-        <!-- Front -->
-        <a-text value="Front" color="#fff" position="0 0 6" scale="3 3 3" align="center" look-at="[gps-camera]"></a-text>
-      
-        <!-- Back -->
-        <a-text value="Back" color="#fff" position="0 0 -6" scale="3 3 3" align="center" rotation="0 180 0" look-at="[gps-camera]"></a-text>
-      
-        <!-- Right -->
-        <a-text value="Right" color="#fff" position="6 0 0" scale="3 3 3" align="center" rotation="0 -90 0" look-at="[gps-camera]"></a-text>
-      
-        <!-- Left -->
-        <a-text value="Left" color="#fff" position="-6 0 0" scale="3 3 3" align="center" rotation="0 90 0" look-at="[gps-camera]"></a-text>
-      </a-entity>
       <!-- Red Box with Large Text -->
-      <!-- <a-entity
+      <a-entity
         gps-new-entity-place="latitude: 8.5272683; longitude: 76.8896448"
       >
         <a-box material="color: red" scale="10 10 10"></a-box>
@@ -61,10 +45,10 @@
           baseline="bottom"
         >
         </a-text>
-      </a-entity> -->
+      </a-entity>
 
       <!-- Green Box with Large Text -->
-      <!-- <a-entity
+      <a-entity
         gps-new-entity-place="latitude: 8.5277927; longitude: 76.8898071"
       >
         <a-box material="color: green" scale="10 10 10"></a-box>
@@ -78,7 +62,7 @@
           width="10"
         >
         </a-text>
-      </a-entity> -->
+      </a-entity>
     </a-scene>
   </body>
 </html>
