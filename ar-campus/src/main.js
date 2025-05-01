@@ -19,6 +19,20 @@ window.addEventListener("resize", (e) => {
   camera.updateProjectionMatrix();
 });
 
+document.getElementById("startBtn").addEventListener("click", async () => {
+  // Ask for device motion permission
+  if (typeof DeviceOrientationEvent.requestPermission === "function") {
+    const response = await DeviceOrientationEvent.requestPermission();
+    if (response !== "granted") return;
+  }
+
+  // Start GPS and webcam
+  locar.startGps();
+  cam.start();
+  deviceControls.connect();
+});
+
+
 const locar = new LocAR.LocationBased(scene, camera);
 
 const deviceControls = new LocAR.DeviceOrientationControls(camera);
