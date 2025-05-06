@@ -17,6 +17,7 @@ export default function Login() {
     if (response) {
       localStorage.setItem("roles", response?.roles);
       localStorage.setItem("user-id", response?._id);
+      localStorage.setItem("username", response?.firstName);
       window.location.href = `/profile`;
     }
   }

@@ -27,7 +27,8 @@ export default function Signup() {
     console.log(response);
     if (response) {
       localStorage.setItem("user-id", response?.data?._id);
-      localStorage.setItem("roles", response?.data?.roles)
+      localStorage.setItem("roles", response?.data?.roles);
+      localStorage.setItem("username", response?.data?.firstName);
       window.location.href = "/profile";
     }
   }
