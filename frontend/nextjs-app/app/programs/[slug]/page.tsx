@@ -1,31 +1,38 @@
-// app/programs/[slug]/page.tsx
-
+"use client";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { useEffect, useState } from "react";
 
 
-export default function ProgramDetail() {
-  const program = {
-    title: "Program Title",
-    description: "Program Description",
-    registrationLink: "#",
+export default function ProgramDetail({ params }: { params: { slug: string } }) {
+  const [program, setProgram] = useState({
+    name: "",
+    description: "",
+  });
+  
+  const fetchData = async () => {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/programs/" + params.slug);
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error("Failed to fetch programs");
+    }
+    setProgram(data);
   };
 
-  if (!program) {
-    notFound(); // 404 if slug not found
-  }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
-    <main className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-4xl font-bold text-indigo-700 mb-6">{program.title}</h1>
-      <p className="text-gray-700 text-lg">{program.description}</p>
+    <main className="min-h-screen p-6 max-w-3xl mx-auto">
+      <h1 className="text-4xl font-bold text-white mb-6">{program.name}</h1>
+      <p className="text-gray-200 text-lg">{program.description}</p>
 
       {/* Register Now Button */}
-      <Link href={program.registrationLink}>
+      {/* <Link href={program.registrationLink}>
         <button className="bg-indigo-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">
           Register Now
         </button>
-      </Link>
+      </Link> */}
 
       {/* Optional: Go Back Button */}
       <div className="mt-8">

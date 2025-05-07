@@ -3,7 +3,10 @@
 import { useState } from "react";
 
 export default function AddNewProgram(){
-  const [programData, setProgramData] = useState({});
+  const [programData, setProgramData] = useState({
+    name: "",
+    description: "",
+  });
 
   function handleInputChange(event: any) {
     const { name, value } = event.target;
@@ -15,6 +18,9 @@ export default function AddNewProgram(){
   async function handleFormSubmit() {
     await fetch(process.env.NEXT_PUBLIC_API_URL + "/programs", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(programData),
     })
       .then((response) => response.json())
@@ -31,6 +37,7 @@ export default function AddNewProgram(){
             type="text"
             id="name"
             name="name"
+            value={programData.name}
             onChange={handleInputChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
@@ -42,6 +49,7 @@ export default function AddNewProgram(){
           <textarea
             id="description"
             name="description"
+            value={programData.description}
             onChange={handleInputChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />

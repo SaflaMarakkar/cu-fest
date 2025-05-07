@@ -28,11 +28,18 @@ export default function HeaderControls() {
   return (
     <>
     {roles?.toLocaleLowerCase() === "admin" && (
+      <>
         <li>
-          <Link href="/user_list" className="">
-            User List
+          <Link href="/programs/add" className="">
+            Add Program
           </Link>
         </li>
+        <li>
+        <Link href="/user_list" className="">
+          User List
+        </Link>
+      </li>
+      </>
       )}
       {userId ? (
         <>
