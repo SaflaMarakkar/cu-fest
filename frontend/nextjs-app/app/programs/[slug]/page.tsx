@@ -2,10 +2,12 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useParams } from 'next/navigation'
 
 
-export default function ProgramDetail({ params }: { params: { slug: string } }) {
+export default function ProgramDetail() {
   const router = useRouter();
+  const params = useParams();
   const [program, setProgram] = useState({
     name: "",
     description: "",
