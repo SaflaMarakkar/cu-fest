@@ -143,8 +143,9 @@ export default function Home() {
               </td>
               <td style={{ border: "1px solid #ddd", padding: "8px" }}>
                 {programs.map((program) => (
-                  <div key={`program-${program._id}`} >
+                  <div key={`program-${program._id}`} className="flex items-center" >
                 <input
+                className="mr-2 w-4 h-4"
                   id={program._id}
                   type="checkbox"
                   checked={user.associatedPrograms?.includes(program._id)}

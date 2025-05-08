@@ -3,6 +3,23 @@ const router = express.Router();
 const User = require("../models/User");
 const mongoose = require('mongoose');
 
+// API 9: Get All users registered to a program
+router.get("/registered/:programId", async (req, res) => {
+  try {
+    console.log(req.params.programId);
+    
+    const users = await User.find({ registeredPrograms: req.params.programId });
+    // remove password from response on delete
+    const filteredUsers = await users.map((user) => {
+      delete user.password;
+      return user;
+    })
+    res.json(filteredUsers);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // API 1: Get user by ID
 router.get("/:id", async (req, res) => {
   try {
