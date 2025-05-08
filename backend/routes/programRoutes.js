@@ -5,8 +5,6 @@ const Program = require("../models/Program");
 // Create a program
 router.post("/", async (req, res) => {
   try {
-    console.log(req.body);
-    
     const program = new Program(req.body);
     await program.save();
     res.status(201).json(program);

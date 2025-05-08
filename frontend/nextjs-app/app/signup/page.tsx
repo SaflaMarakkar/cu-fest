@@ -6,7 +6,6 @@ export default function Signup() {
     firstName: "",
     lastName: "",
     email: "",
-    githubAccount: "",
     phoneNumber: "",
     password: ""
   });
@@ -41,8 +40,6 @@ export default function Signup() {
       <input type="text" placeholder="Last Name" className='border border-gray-100 rounded-lg text-black p-2' name="lastName" onChange={(e) => setState({ ...state, lastName: e.target.value })} required />
       <span className="font-thin"> Email </span>
       <input type="text" placeholder="Email" className='border border-gray-100 rounded-lg text-black p-2' name="email" onChange={(e) => setState({ ...state, email: e.target.value })} required />
-      <span className="font-thin"> Github </span>
-      <input type="text" placeholder="Github" className='border border-gray-100 rounded-lg text-black p-2' name="githubAccount" onChange={(e) => setState({ ...state, githubAccount: e.target.value })} />
       <span className="font-thin"> Phone Number </span>
       <input type="text" placeholder="Phone Number" className='border border-gray-100 rounded-lg text-black p-2' name="phoneNumber" onChange={(e) => setState({ ...state, phoneNumber: e.target.value })} />
       <span className="font-thin"> Password </span>

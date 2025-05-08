@@ -1,12 +1,15 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 
 export default function ProgramDetail({ params }: { params: { slug: string } }) {
+  const router = useRouter();
   const [program, setProgram] = useState({
     name: "",
     description: "",
+    _id: "",
   });
   
   const fetchData = async () => {
@@ -16,6 +19,23 @@ export default function ProgramDetail({ params }: { params: { slug: string } }) 
       throw new Error("Failed to fetch programs");
     }
     setProgram(data);
+  };
+
+  const register = async (id: string) => {
+    if(!localStorage?.getItem("user-id")){
+      router.push("/");
+    }else{
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/users/register", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+        body: JSON.stringify({
+          id: localStorage?.getItem("user-id"),
+          registeredPrograms: [id],
+      })
+    });
+    }
   };
 
   useEffect(() => {
@@ -28,11 +48,9 @@ export default function ProgramDetail({ params }: { params: { slug: string } }) 
       <p className="text-gray-200 text-lg">{program.description}</p>
 
       {/* Register Now Button */}
-      {/* <Link href={program.registrationLink}>
-        <button className="bg-indigo-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">
+        <button onClick={() => register(program._id)} className="bg-indigo-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">
           Register Now
         </button>
-      </Link> */}
 
       {/* Optional: Go Back Button */}
       <div className="mt-8">

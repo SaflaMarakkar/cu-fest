@@ -27,7 +27,7 @@ export default function HeaderControls() {
 
   return (
     <>
-    {roles?.toLocaleLowerCase() === "admin" && (
+    {roles && roles?.toLocaleLowerCase() === "admin" && (
       <>
         <li>
           <Link href="/programs/add" className="">

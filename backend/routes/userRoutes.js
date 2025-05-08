@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const mongoose = require('mongoose');
 
 // API 1: Get user by ID
 router.get("/:id", async (req, res) => {
@@ -83,6 +84,42 @@ router.patch("/", async (req, res) => {
     const user = await User.findByIdAndUpdate(id, { roles }, { new: true });
     if (!user) return res.status(404).json({ message: "User not found" });
 
+    res.json({ statusCode: 200, message: "Updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// API 6: Program registration
+router.patch("/register", async (req, res) => {
+  try {
+    const { id, registeredPrograms: newProgram } = req.body;
+    const user = await User.findByIdAndUpdate(id, { $addToSet: { registeredPrograms: newProgram } }, { new: true });
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.json({ statusCode: 200, message: "Updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// API 7: Program associate
+router.patch("/associate", async (req, res) => {
+  try {
+    const { id, associatedPrograms: newProgram } = req.body;
+    const user = await User.findByIdAndUpdate(id, { $addToSet: { associatedPrograms: newProgram } }, { new: true });
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.json({ statusCode: 200, message: "Updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// API 8: Program disassociate
+router.patch("/disassociate", async (req, res) => {
+  try {
+    const { id, associatedPrograms: newProgram } = req.body;
+    const user = await User.findByIdAndUpdate(id, { $pull: { associatedPrograms: new mongoose.Types.ObjectId(newProgram[0]) } }, { new: true });
+    if (!user) return res.status(404).json({ message: "User not found" });
     res.json({ statusCode: 200, message: "Updated successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
