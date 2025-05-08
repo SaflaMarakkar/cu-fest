@@ -53,7 +53,7 @@ export default function ProgramList() {
 
   return (
     <div style={{ padding: "2rem" }}>
-      <h1>Program List</h1>
+      <h1 className="text-4xl font-bold text-white mb-6">Program List</h1>
 
       <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "1rem" }}>
         <thead>
