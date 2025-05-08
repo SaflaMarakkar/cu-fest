@@ -31,11 +31,11 @@
       <a-camera gps-new-camera="gpsMinDistance: 1"></a-camera>
       <!-- Red Box with Large Text -->
       <a-entity
-        gps-new-entity-place="latitude: 8.5272683; longitude: 76.8896448"
+        gps-new-entity-place="latitude: 11.136213; longitude: 75.888521"
       >
         <a-box material="color: red" scale="10 10 10"></a-box>
         <a-text
-          value="Bed Pod"
+          value="CCSIT"
           color="#ffffff"
           position="0 7 0"
           align="center"
@@ -47,19 +47,87 @@
         </a-text>
       </a-entity>
 
+      <!-- const LOCATIONS = [
+  { name: "Tagore Nikethan", lat: 11.1340598, lng: 75.8951733 },
+  { name: "EMS Seminar Hall", lat: 11.1338299, lng: 75.8930597 },
+  { name: "Botanical Garden", lat: 11.1339034, lng: 75.8905995 },
+  { name: "STUDENT TRAP", lat: 11.1358791, lng: 75.8894318 },
+  { name: "Pareeksha Bhavan", lat: 11.1354189, lng: 75.8916137 },
+]; -->
       <!-- Green Box with Large Text -->
       <a-entity
-        gps-new-entity-place="latitude: 8.5277927; longitude: 76.8898071"
+        gps-new-entity-place="latitude: 11.1340598; longitude: 75.8951733"
       >
         <a-box material="color: green" scale="10 10 10"></a-box>
         <a-text
-          value="Children Park"
+          value="Tagore Nikethan"
           color="#fff"
           position="0 8 0"
           align="center"
           look-at="[gps-camera]"
-          scale="10 10 10"
-          width="10"
+          scale="5 5 5"
+        >
+        </a-text>
+      </a-entity>
+      <!-- EMS Seminar Hall -->
+      <a-entity
+        gps-new-entity-place="latitude: 11.1338299; longitude: 75.8930597"
+      >
+        <a-box material="color: blue" scale="10 10 10"></a-box>
+        <a-text
+          value="EMS Seminar Hall"
+          color="#fff"
+          position="0 8 0"
+          align="center"
+          look-at="[gps-camera]"
+          scale="5 5 5"
+        >
+        </a-text>
+      </a-entity>
+      <!-- Botanical Garden -->
+      <a-entity
+      gps-new-entity-place="latitude: 11.1339034; longitude: 75.8905995"
+    >
+      <a-box material="color: yellow" scale="10 10 10"></a-box>
+      <a-text
+        value="Botanical Garden"
+        color="#fff"
+        position="0 8 0"
+        align="center"
+        look-at="[gps-camera]"
+        scale="5 5 5"
+      >
+      </a-text>
+    </a-entity>
+
+      <!-- STUDENT TRAP -->
+      <a-entity
+        gps-new-entity-place="latitude: 11.1358791; longitude: 75.8894318"
+      >
+        <a-box material="color: red" scale="10 10 10"></a-box>
+        <a-text
+          value="STUDENT TRAP"
+          color="#fff"
+          position="0 8 0"
+          align="center"
+          look-at="[gps-camera]"
+          scale="5 5 5"
+        >
+        </a-text>
+      </a-entity>
+
+      <!-- Pareeksha Bhavan -->
+      <a-entity
+        gps-new-entity-place="latitude: 11.1354189; longitude: 75.8916137"
+      >
+        <a-box material="color: green" scale="10 10 10"></a-box>
+        <a-text
+          value="Pareeksha Bhavan"
+          color="#fff"
+          position="0 8 0"
+          align="center"
+          look-at="[gps-camera]"
+          scale="5 5 5"
         >
         </a-text>
       </a-entity>

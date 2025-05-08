@@ -39,6 +39,11 @@ export default async function Page() {
             <div className="mt-6 space-y-6 prose sm:prose-lg md:prose-xl lg:prose-2xl text-white">
               <p>{page?.description}</p>
             </div>
+            <div className="mt-6 flex justify-center">
+              <a href="https://amjad-ra.github.io/test-ar-studio539j5oh/" className="btn btn-primary border-white border-2 rounded-3xl p-6" target="_blank">
+                AR Map
+              </a>
+              </div>
           </div>
         </div>
       </div>
