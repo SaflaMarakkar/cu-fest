@@ -40,7 +40,7 @@ export default async function Page() {
               <p>{page?.description}</p>
             </div>
             <div className="mt-6 flex justify-center">
-              <a href="https://amjad-ra.github.io/test-ar-studio539j5oh/" className="btn btn-primary border-white border-2 rounded-3xl p-6" target="_blank">
+              <a href="https://cu-fest-q2ib.vercel.app/" className="btn btn-primary border-white border-2 rounded-3xl p-6" target="_blank">
                 AR Map
               </a>
               </div>
