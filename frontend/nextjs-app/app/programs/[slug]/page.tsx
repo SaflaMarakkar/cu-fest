@@ -10,6 +10,7 @@ export default function ProgramDetail() {
   const router = useRouter();
   const params = useParams();
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [userRoles, setUserRoles] = useState<string | null>(null);
 
   const [program, setProgram] = useState({
     name: "",
@@ -57,6 +58,9 @@ export default function ProgramDetail() {
   useEffect(() => {
     fetchData();
     fetchRegisteredUsersByProgramId();
+    if(localStorage?.getItem("roles")){
+      setUserRoles(localStorage?.getItem("roles"));
+    }
   }, []);
 
   const onHandleDownload = async () => {
@@ -81,9 +85,8 @@ export default function ProgramDetail() {
         </div>
       </div>
 
-      
-
-      {/* Registered Users Section */}
+      {userRoles?.toLocaleLowerCase() !== "user" ? (
+<>
       <section className="mt-12 flex flex-col items-center" ref={sectionRef}>
         <h2 className="text-3xl font-bold text-gray-500 mb-6">Registered Users</h2>
         <div className="grid gap-6 grid-cols-1 w-full">
@@ -114,6 +117,8 @@ export default function ProgramDetail() {
         </div>
       </section>
       <button className="mt-4 border border-gray-200 text-white px-4 py-4 rounded-xl font-semibold transition print:!hidden" onClick={onHandleDownload}>Download</button>
+      </>
+      ) : null}
     </main>
   );
 }
