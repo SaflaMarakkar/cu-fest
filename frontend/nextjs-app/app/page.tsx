@@ -49,6 +49,13 @@ export default async function Page() {
       </div>
       <div className="border-t border-black">
         <div className="container">
+          <div className="py-12 sm:py-2">
+            <iframe src={"http://localhost:5173/"} frameBorder="0" width="100%" height="700px" className="rounded-3xl border-4 border-gray-100"></iframe>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-black">
+        <div className="container">
           <aside className="py-12 sm:py-20">
             <Suspense>{await AllPosts()}</Suspense>
           </aside>
