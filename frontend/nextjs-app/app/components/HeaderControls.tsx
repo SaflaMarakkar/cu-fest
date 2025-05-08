@@ -39,6 +39,11 @@ export default function HeaderControls() {
           User List
         </Link>
       </li>
+      <li>
+      <Link href="/program_list" className="">
+          Program List
+        </Link>
+      </li>
       </>
       )}
       {userId ? (
