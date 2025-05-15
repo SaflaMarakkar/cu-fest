@@ -59,18 +59,15 @@ export default async function Page(props: Props) {
   }
 
   return (
-    <div className="my-12 lg:my-24">
-      <Head>
-        <title>{page.heading}</title>
-      </Head>
+    <div className="my-12 lg:my-24 text-white">
       <div className="">
         <div className="container">
           <div className="pb-6 border-b border-gray-100">
             <div className="max-w-3xl">
-              <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-7xl">
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-7xl">
                 {page.heading}
               </h2>
-              <p className="mt-4 text-base lg:text-lg leading-relaxed text-gray-600 uppercase font-light">
+              <p className="mt-4 text-base lg:text-lg leading-relaxed text-gray-200 uppercase font-light">
                 {page.subheading}
               </p>
             </div>

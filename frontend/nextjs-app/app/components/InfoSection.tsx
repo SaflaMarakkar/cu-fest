@@ -18,14 +18,14 @@ export default function CTA({ block }: InfoProps) {
           </h2>
         )}
         {block?.subheading && (
-          <span className="block mt-4 mb-8 text-lg uppercase font-light text-gray-900/70">
+          <span className="block mt-4 mb-8 text-lg uppercase font-light text-white">
             {block.subheading}
           </span>
         )}
         <div className="mt-4">
           {block?.content?.length && (
             <PortableText
-              className=""
+              className="text-white"
               value={block.content as PortableTextBlock[]}
             />
           )}

@@ -7,6 +7,7 @@ import {settings} from './singletons/settings'
 import {home} from './singletons/home'
 import {link} from './objects/link'
 import {blockContent} from './objects/blockContent'
+import location from './documents/location'
 
 // Export an array of all the schema types.  This is used in the Sanity Studio configuration. https://www.sanity.io/docs/schema-types
 
@@ -18,6 +19,7 @@ export const schemaTypes = [
   page,
   post,
   person,
+  location,
   // Objects
   blockContent,
   infoSection,
