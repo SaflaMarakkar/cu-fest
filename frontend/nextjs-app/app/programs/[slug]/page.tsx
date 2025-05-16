@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import generatePDF from "react-to-pdf";
 import ModalDialog from "@/app/components/ModalDialog";
+import { fetchLocations } from "../actions";
 
 export default function ProgramDetail() {
   const router = useRouter();
@@ -12,11 +13,15 @@ export default function ProgramDetail() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [userRoles, setUserRoles] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
+  const [locations, setLocations] = useState<any[]>([]);
 
   const [program, setProgram] = useState({
     name: "",
     description: "",
     _id: "",
+    startDate: "",
+    endDate: "",
+    location: "",
   });
 
   const [registeredUsers, setRegisteredUsers] = useState([]);
@@ -30,6 +35,14 @@ export default function ProgramDetail() {
       throw new Error("Failed to fetch programs");
     }
     setProgram(data);
+  };
+
+  const fetchLocationData = async () => {
+    const res = await fetchLocations();
+
+    if (res.data) {
+      setLocations(res.data);
+    }
   };
 
   const fetchRegisteredUsersByProgramId = async () => {
@@ -66,6 +79,7 @@ export default function ProgramDetail() {
 
   useEffect(() => {
     fetchData();
+    fetchLocationData();
     fetchRegisteredUsersByProgramId();
     if (localStorage?.getItem("roles")) {
       setUserRoles(localStorage?.getItem("roles"));
@@ -87,6 +101,11 @@ export default function ProgramDetail() {
       <div className="bg-black rounded-2xl p-6 border border-gray-100">
         <h1 className="text-4xl font-bold text-white mb-6">{program.name}</h1>
         <p className="text-gray-200 text-lg">{program.description}</p>
+        <div className="mt-8 flex justify-end">
+          <p>Start Date and Time: {`${new Date(program.startDate).toLocaleDateString() } ${new Date(program.startDate).toLocaleTimeString()}`}</p>
+          <p>End Date and Time: {`${new Date(program.endDate).toLocaleDateString() } ${new Date(program.endDate).toLocaleTimeString()}`}</p>
+          <p>Location: {locations.find((loc) => loc._id === program.location)?.name}</p>
+          </div>
         {userRoles?.toLocaleLowerCase() === "user" ? (
         <div className="mt-8 flex justify-end">
           {/* Register Now Button */}

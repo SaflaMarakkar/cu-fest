@@ -5,6 +5,7 @@ const programSchema = new mongoose.Schema({
   description: { type: String },
   startDate: { type: Date },
   endDate: { type: Date },
+  location: { type: String}
 });
 
 const Program = mongoose.model("Program", programSchema);

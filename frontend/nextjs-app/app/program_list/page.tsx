@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { fetchLocations } from "../programs/actions";
 
 export default function ProgramList() {
   const [programs, setPrograms] = useState<any[]>([]);
+  const [locations, setLocations] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchPrograms = async () => {
@@ -25,6 +27,20 @@ export default function ProgramList() {
         console.error(error);
       }
     };
+
+    const fetchLocationData = async () => {
+      try {
+        const res = await fetchLocations();
+
+        if (res.data) {
+          setLocations(res.data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchLocationData();
 
     fetchPrograms();
   }, []);
@@ -62,6 +78,7 @@ export default function ProgramList() {
             <th style={{ border: "1px solid #ddd", padding: "8px" }}>Description</th>
             <th style={{ border: "1px solid #ddd", padding: "8px" }}>Start Date</th>
             <th style={{ border: "1px solid #ddd", padding: "8px" }}>End Date</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Location</th>
             <th style={{ border: "1px solid #ddd", padding: "8px" }}>Actions</th>
           </tr>
         </thead>
@@ -71,11 +88,14 @@ export default function ProgramList() {
               <td style={{ border: "1px solid #ddd", padding: "8px" }}>{program.name}</td>
               <td style={{ border: "1px solid #ddd", padding: "8px" }}>{program.description}</td>
               <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                {new Date(program.startDate).toLocaleDateString()}
+                {`${new Date(program.startDate).toLocaleDateString() } ${new Date(program.startDate).toLocaleTimeString()}`}
               </td>
               <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                {new Date(program.endDate).toLocaleDateString()}
+                {`${new Date(program.endDate).toLocaleDateString() } ${new Date(program.endDate).toLocaleTimeString()}`}
               </td>
+              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                {locations.find((location) => location._id === program.location)?.name}
+                </td>
               <td style={{ border: "1px solid #ddd", padding: "8px" }}>
                 <button
                   onClick={() => handleDelete(program._id)}

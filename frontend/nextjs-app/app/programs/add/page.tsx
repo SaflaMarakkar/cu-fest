@@ -1,7 +1,8 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { fetchLocations } from "../actions";
 
 export default function AddNewProgram(){
   const router = useRouter();
@@ -9,6 +10,18 @@ export default function AddNewProgram(){
     name: "",
     description: "",
   });
+  const [locations, setLocations] = useState([]);
+
+  useEffect(() => {
+    async function getLocations() {
+      const data = await fetchLocations();
+      if (!data || !data.data) {
+        return;
+      }
+      setLocations(data.data);
+    }
+    getLocations();
+  }, []);
 
   function handleInputChange(event: any) {
     const { name, value } = event.target;
@@ -63,7 +76,7 @@ export default function AddNewProgram(){
           Start Date:
           </label>
           <input
-            type="date"
+            type="datetime-local"
             id="startDate"
             name="startDate"
             onChange={handleInputChange}
@@ -75,13 +88,32 @@ export default function AddNewProgram(){
           End Date:
           </label>
           <input
-            type="date"
+            type="datetime-local"
             id="endDate"
             name="endDate"
             onChange={handleInputChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           </div>
+          <div className="mb-4">
+          <label htmlFor="location" className="block text-gray-700 font-bold mb-2">
+          Location:
+          </label>
+          <select
+            id="location"
+            name="location"
+            onChange={handleInputChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option value="">Select a location</option>
+            {locations.map((location: any) => (
+              <option key={location._id} value={location._id}>
+                {location.name}
+              </option>
+            ))}
+          </select>
+          </div>
+
           <button
             className="bg-black hover:bg-red-500 focus:bg-cyan-500 py-3 px-6 text-white transition-colors duration-200 border border-gray-100 rounded-full"
             onClick={handleFormSubmit}
