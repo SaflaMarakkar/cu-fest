@@ -11,6 +11,8 @@
     "typegen": "sanity typegen generate"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.3",
+    "@heroicons/react": "^2.2.0",
     "@react-three/drei": "^10.0.4",
     "@react-three/fiber": "^9.1.0",
     "@react-three/rapier": "^2.0.0",
