@@ -43,7 +43,7 @@ export default function Signup() {
       <span className="font-thin"> Phone Number </span>
       <input type="text" placeholder="Phone Number" className='border border-gray-100 rounded-lg text-black p-2' name="phoneNumber" onChange={(e) => setState({ ...state, phoneNumber: e.target.value })} />
       <span className="font-thin"> Password </span>
-      <input type="password" placeholder="Password" className='border border-gray-100 rounded-lg text-black p-2' name="password" onChange={(e) => setState({ ...state, password: e.target.value })} />
+      <input type="password" placeholder="Password" className='border border-gray-100 rounded-lg text-black p-2' name="password" onChange={(e) => setState({ ...state, password: e.target.value })} required/>
       <button type="submit" className="mt-4 bg-black hover:bg-red-500 focus:bg-cyan-500 py-3 px-6 text-white transition-colors duration-200 outline rounded" onClick={handleSignup}>Signup</button>
     </div>
   </div>

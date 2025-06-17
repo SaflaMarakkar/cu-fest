@@ -25,9 +25,9 @@ export default function Login() {
     <div className="px-12 py-12 flex flex-col gap-3 h-full">
       <h3 className="text-2xl font-semibold">Login</h3>
       <span className="font-thin"> Email </span>
-      <input type="text" placeholder="Email" className='border border-gray-100 rounded-lg text-black p-2' name="email" onChange={(e) => setState({ ...state, email: e.target.value })} />
+      <input type="text" placeholder="Email" className='border border-gray-100 rounded-lg text-black p-2' name="email" onChange={(e) => setState({ ...state, email: e.target.value })} required/>
       <span className="font-thin"> Password </span>
-      <input type="password" placeholder="Password" className='border border-gray-100 rounded-lg text-black p-2' name="password" onChange={(e) => setState({ ...state, password: e.target.value })} />
+      <input type="password" placeholder="Password" className='border border-gray-100 rounded-lg text-black p-2' name="password" onChange={(e) => setState({ ...state, password: e.target.value })} required/>
       <button className="mt-4 bg-black hover:bg-red-500 focus:bg-cyan-500 py-3 px-6 text-white transition-colors duration-200 outline rounded" onClick={handleLogin}>Login</button>
     </div>
     </div>
